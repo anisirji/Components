@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&display=swap');
+
+
+
+// mixin
+
+@mixin inleft {
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+@mixin inright {
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+@mixin inup {
+    animation-name: moveInBottom;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+@mixin fadein {
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+    animation-fill-mode: backwards;
+}
+
+
+
+
+
+input,
+input:active,
+input:focus{
+    padding: 1rem;
+    outline: none;
+    width: 100%;
+    background-color: rgb(241, 240, 240);
+    border: none;
+    @include fadein;
+    animation-delay: 1.5s;
+
+}
+
+.error {
+    color: rgb(240, 60, 60);
+    margin: 1rem;
+    font-weight: 300;
+}
+
+
+
+
+
+*,
+*:active,
+*:before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    height: 100vh;
+    font-size: 62.5%;
+    background-image: url(./loginbg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    overflow-x:hidden;
+    @include fadein;
+   
+    
+}
+
+.login {
+    
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    
+   
+   
+   
+    
+    
+    
+    &_heading {
+        text-align: center;
+        margin: 4rem;
+        color: rgb(255, 255, 255);
+        font-size: 3.5rem;
+        font-weight: 100;
+        //margin-bottom: 3rem;
+
+
+    }
+
+    &_box {
+        margin-top: 2.5rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        width: 350px;
+        box-shadow: 1px 1px 15px 1px;
+        @include fadein;
+        animation-delay: .5s;
+       
+
+        &--heading {
+            font-size: 2rem;
+            margin-top: 0;
+            text-align: center;
+            padding: 1rem;
+
+
+        }   
+        
+        &--form {
+            padding: 2rem;
+            @include fadein;
+            animation-delay: 1.2s;
+           
+
+            &--ep {
+                font-size: .8rem;
+                margin-bottom: .7rem;
+                font-weight: 300;
+                @include fadein;
+                animation-delay: 1s;
+
+                span {
+                    color: red;
+                    font-size: 1.5rem;
+                }
+
+            }
+
+            &--email{
+                margin-bottom: 2rem;
+               
+               
+
+            }
+            &--pp{
+                font-size: .8rem;
+                margin-bottom: .7rem;
+                @include fadein;
+                animation-delay: 1s;
+
+                span {
+                    color: red;
+                    font-size: 1.5rem;
+                }
+
+            }
+            &--password {
+
+            }
+
+            &--btn{
+
+                background-color: rgb(0, 68, 255);
+                margin-top: 2.5rem;
+                font-size: 1rem;
+                width: 150px;
+                padding: .5rem;
+                text-align: center;
+               
+                cursor: pointer;
+                color: white;
+                font-weight: 300;
+                @include inup;
+                animation-delay: 1.5s;
+
+                &:hover {
+                    
+                    text-align: center;
+                   
+                    box-shadow: 1px 2px 15px 2px rgb(59, 59, 59);
+                }
+
+                &:focus,
+                &:active {
+                    text-align: center;
+                    transform: translateX(50%);
+                    box-shadow: 0px 1px 5px 1px rgb(59, 59, 59);
+                }
+
+
+               
+
+               
+
+
+            }
+
+        }
+    
+    }
+}
+
+
+//Animatioins
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+
+//Responsiveness
+
+@media only screen and (max-width: 600px) {
+    
+    body{
+        overflow-y:scroll;
+    }
+    
+    .login {
+
+      &_heading {
+          font-size: 2rem;
+      }
+
+      &_box{
+         
+          width: 90%;
+      }
+    }
+  }
+  
+  @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+      .login {
+          &_box{
+              width:80%;
+              margin-top: -2rem;
+          }
+      }
+      .login_box--form--ep,
+      .login_box--form--pp {
+          font-size: 1.1rem;
+      }
+
+      .login_box--form--btn {
+          padding: 1rem;
+          width: 40%;
+      }
+
+      .error {
+          font-size: 1rem;
+      }
+
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+    input {
+        font-size: 1.3rem;
+    }
+    .login_heading {
+        margin-top: 10rem;
+        
+    }
+
+    .login {
+       
+        &_box{
+            width:80%;
+            margin-top: -2rem;
+             
+            &--heading {
+                font-size: 4rem;
+            }
+        }
+    }
+    .login_box--form--ep,
+    .login_box--form--pp {
+        font-size: 1.5rem;
+    }
+
+    .login_box--form--btn {
+        padding: 1rem;
+        width: 40%;
+        font-size: 2rem;
+    }
+
+    .error {
+        font-size: 1rem;
+    }
+
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .login_heading {
+        font-size: 2rem;
+        margin: 1rem;
+    }
+
+}
